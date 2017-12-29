@@ -3,12 +3,12 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 	<title>My Basemap</title>
-
 
 	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 	<script>
-  		// Initialize Firebase
+  	// Initialize Firebase
   	var config = {
 	    apiKey: "AIzaSyDxnXAsTX51YN6UBbbdqy_qizo4gG9q7E4",
 	    authDomain: "basemap-11587.firebaseapp.com",
@@ -21,32 +21,42 @@
 	</script>
 
 
-	<link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/css/esri.css">
-	<script src="https://js.arcgis.com/3.20/"></script>
+	 <!-- Reference the JavaScript API from our CDN and you are ready to get started: -->
+	<link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+	<script src="https://js.arcgis.com/4.6/"></script>
 	<script>
-		var map;
- 		require(["esri/map","dojo/domReady!"], function(Map) {
- 			map = new Map("map1", {
- 				center: [-122.4479, 37.7531],		//coordinates of SF
- 				zoom: 12,
- 				basemap: "streets"					
- 			});
- 		});
+	require([
+	  "esri/Map",
+	  "esri/views/SceneView",
+	  "dojo/domReady!"
+	], function(Map, SceneView){
+	  var map = new Map({
+	    basemap: "satellite",
+	    ground: "world-elevation"
+	  });
+	  var view = new SceneView({
+	    container: "viewDiv",     // Reference to the scene div created in step 5
+	    map: map,                 // Reference to the map object created before the scene
+	    // scale: 50000000,          // Sets the initial scale to 1:50,000,000
+		zoom: 12,
+	    center: [-122.4479, 37.7531]  // Sets the center point of view with lon/lat
+	  });
+	});
 	</script>
 
 	<style>
- 		html, body, #map1 {
+ 		html, body, #viewDiv {
  			padding: 0;
  			margin: 0;
  			height: 100%;
  			width: 100%;
  		}
 	</style>
-
 </head>
 
 <body>
-	<div id="map1"></div>
+	<h2>hads</h2>
+	<div id="viewDiv"></div>
 
 </body>
 
